@@ -1,0 +1,9 @@
+# A simple compose file to run this server
+version: '3'
+services:
+  sytex_server:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - "PORT=8080"

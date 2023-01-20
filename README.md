@@ -16,8 +16,13 @@ Or docker:
 
 ```bash
 $ cd server/
+
+# Using plain docker
 $ docker build -t sytex_server .
 $ docker run -d -p 8080:8080 sytex_server
+
+# Using docker-compose
+$ docker-compose up -d
 ```
 
 It has some REST endpoints to GET and PATCH a `Form`. 
