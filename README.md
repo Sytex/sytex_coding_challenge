@@ -17,7 +17,7 @@ Or docker:
 ```bash
 $ cd server/
 $ docker build -t sytex_server .
-$ docker run -d sytex_server
+$ docker run -d -p 8080:8080 sytex_server
 ```
 
 It has some REST endpoints to GET and PATCH a `Form`. 

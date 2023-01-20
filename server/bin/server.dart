@@ -7,7 +7,7 @@ import 'package:shelf_router/shelf_router.dart';
 import 'package:tiny_storage/tiny_storage.dart';
 
 /// The router for the server.
-/// 
+///
 /// This is a simple router that has two routes:
 /// - GET /form
 /// - PATCH /form/content/\<entry_id\>
@@ -92,7 +92,10 @@ Future<void> _simulateNetworkDelay({
 
 void main(List<String> args) async {
   // Open the database.
-  final directoryPath = Platform.script.path.replaceAll('server.dart', '');
+  final directoryPathSegments = Platform.script.path.split('/');
+  final directoryPath = directoryPathSegments
+      .sublist(0, directoryPathSegments.length - 1)
+      .join('/');
   final database = await TinyStorage.init(
     'database.db',
     path: directoryPath,
