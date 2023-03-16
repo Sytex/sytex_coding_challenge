@@ -151,7 +151,7 @@ HTTP/1.1 200 OK
 > **Warning**
 > If `<uuid>` is not found, the API will respond with status `404`.
 
-### `PATCH /form_element/<uuid>`
+### **PATCH** /form-element/\<uuid\>
 
 Update form element (an entry or a group) using its uuid.
 
