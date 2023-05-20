@@ -54,7 +54,7 @@ Get a single form by its uuid.
 **Query example:**
 
 ```bash
-$ curl -i 'https://API_URL/form/34d94484-9f84-4e73-910f-678a5670c6ee/'
+$ curl -i 'https://API_URL/form/6fa6791e-8718-4a88-93fe-f0879fe158dd/'
 ``` 
 
 **Response:**
@@ -68,78 +68,33 @@ HTTP/1.1 200 OK
 {
   "elements": [
     {
-      "index": "1.1",
-      "label": "Are you excited for this challenge?",
-      "answer": null,
-      "uuid": "7f6e1a86-73e6-4ce1-bec6-0f8434d36b59",
-      "element_type": "entry",
-      "input_type": "yes_no"
-    },
-    {
-      "index": "1.2",
-      "label": "A few questions about you",
-      "uuid": "b6f4e51f-7326-4353-ae95-867cf8ab1658",
+      "index": "1",
+      "label": "Your work setup",
+      "uuid": "2ec797ba-29df-412f-a2dd-8c8d7928058b",
       "element_type": "group"
     },
     {
-      "index": "1.2.1",
-      "label": "What's your name?",
+      "index": "1.1",
+      "label": "Start by telling us how many monitors you have",
       "answer": null,
-      "uuid": "937e567d-3a0e-4fa5-b12d-f0f7fdf78218",
+      "uuid": "59ea1462-d184-4aae-8cc4-db4255f7dda6",
       "element_type": "entry",
-      "input_type": "text"
+      "input_type": "number"
     },
     {
-      "index": "1.2.2",
-      "label": "When is your birthday?",
+      "index": "1.2",
+      "label": "Do you use a mouse?",
       "answer": null,
-      "uuid": "b6fae733-03d3-44cb-8cef-9cc9fb03934e",
+      "uuid": "8b6e1e07-33ed-443a-a188-f007d0d42620",
       "element_type": "entry",
-      "input_type": "date"
+      "input_type": "yes_no"
     },
-    {
-      "options": [
-        {
-          "label": "Less than a year",
-          "value": "less_than_a_year"
-        },
-        {
-          "label": "1-3 years",
-          "value": "1_3_years"
-        },
-        {
-          "label": "3-5 years",
-          "value": "3_5_years"
-        },
-        {
-          "label": "5-10 years",
-          "value": "5_10_years"
-        },
-        {
-          "label": "More than 10 years",
-          "value": "more_than_10_years"
-        }
-      ],
-      "index": "1.2.3",
-      "label": "How long have you been coding?",
-      "answer": null,
-      "uuid": "b2de6f24-6565-4339-a2f7-8e821cce100f",
-      "element_type": "entry",
-      "input_type": "options"
-    },
-    {
-      "index": "1.3",
-      "label": "Anything else you want to tell us?",
-      "answer": null,
-      "uuid": "41c51ed4-fcbe-4972-ac2f-1bf85039aa43",
-      "element_type": "entry",
-      "input_type": "text"
-    }
+    ...
   ],
-  "name": "A fancy Form",
-  "description": "This is a form with a few questions about you",
-  "uuid": "34d94484-9f84-4e73-910f-678a5670c6ee",
-  "scheduled_finish_date": "2023-01-07T00:00:00.000Z",
+  "name": "Another form",
+  "description": "This one has some questions about your work setup",
+  "uuid": "6fa6791e-8718-4a88-93fe-f0879fe158dd",
+  "scheduled_finish_date": "2023-01-03T00:00:00.000Z",
   "created_at": "2023-01-01T00:00:00.000Z",
   "assigned_to": {
     "name": "John Doe",
@@ -158,7 +113,7 @@ Update form element (an entry or a group) using its uuid.
 **Query example:**
 
 ```bash
-$ curl -iX PATCH 'https://API_URL/form-element/7f6e1a86-73e6-4ce1-bec6-0f8434d36b59' -d '{"answer": true}'
+$ curl -iX PATCH 'https://API_URL/form-element/11bca26d-1e24-490f-a145-7ba0350aec46' -d '{"answer": true}'
 ``` 
 
 **Response:**
@@ -170,10 +125,10 @@ HTTP/1.1 200 OK
 
 ```json
 {
-  "index": "1.1",
-  "label": "Are you excited for this challenge?",
+  "index": "1.1.2",
+  "label": "Are you exited about this challenge?",
   "answer": true,
-  "uuid": "7f6e1a86-73e6-4ce1-bec6-0f8434d36b59",
+  "uuid": "11bca26d-1e24-490f-a145-7ba0350aec46",
   "element_type": "entry",
   "input_type": "yes_no"
 }
@@ -206,6 +161,11 @@ Their `input_type` represents the action the user needs to do to answer ("fill")
 - This is an "Options" `Entry`. 
 - It should be answered by picking an item from a set of options. 
 - `answer` is a `String` with the value of the selected option.
+  
+**input_type:** `"multiple_options"`
+- This is also an "Options" `Entry`. 
+- It should be answered by picking one or more items from a set of options. 
+- `answer` is a `String` with the value of the selected option(s), comma-separated.
 
 **input_type:** `"yes_no"`
 - This is a "Yes/No" `Entry`. 
